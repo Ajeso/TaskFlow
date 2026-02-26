@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Flow</title>
+</head>
+
+<body>
+    <!-- SIDEBAR  -->
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <h1>Task <span>Flow</span></h1>
+        </div>
+        <div class="sidebar-section-label">Views</div>
+        <div class="sidebar-item"><span>📋</span> All Tasks <span class="count">12</span></div>
+        <div class="sidebar-item active"><span>📅</span> Today <span class="count">4</span></div>
+        <div class="sidebar-item"><span>⚡</span> Upcoming <span class="count">8</span></div>
+
+        <div class="sidebar-section-label">Projects</div>
+        <div id="projectList"></div>
+        <div class="sidebar-add-project">＋ Add Project</div>
+    </div>
+
+    <main class="main" id="mainContainer">
+
+        <div class="topbar">
+            <div class="topbar-left">
+                <h2>Work</h2>
+                <p>5 tasks · 2 due today</p>
+            </div>
+            <button class="btn-add">＋ Add Todo</button>
+        </div>
+
+        <div class="filter-bar">
+            <div class="filter-chip active">All</div>
+            <div class="filter-chip">Active</div>
+            <div class="filter-chip">Completed</div>
+            <div class="filter-chip">🔴 High Priority</div>
+        </div>
+
+
+        <!-- TODOS CARDS -->
+        <div class="todo-list">
+
+            <div class="section-divider">Due Today</div>
+            <div class="todo-card">
+                <div class="priority-bar p-high"></div>
+                <div class="todo-checkbox"></div>
+                <div class="todo-content">
+                    <div class="todo-title">Finalize Q3 budget report</div>
+                    <div class="todo-desc">Review all department submissions and consolidate into master spreadsheet
+                        before presentation.</div>
+                    <div class="todo-meta">
+                        <span class="meta-tag">📅 Feb 23, 2026</span>
+                        <span class="priority-badge badge-high">High</span>
+                    </div>
+                </div>
+                <div class="todo-actions">
+                    <div class="action-btn edit">✏️</div>
+                    <div class="action-btn">🗑</div>
+                </div>
+            </div>
+
+            <div class="todo-card" style="border-color: var(--accent); box-shadow: 0 0 0 3px rgba(217,119,87,0.15);">
+                <div class="priority-bar p-med"></div>
+                <div class="todo-checkbox"></div>
+                <div class="todo-content">
+                    <div class="todo-title">
+                        Prepare team standup agenda
+                        <span class="label-note">expanded →</span>
+                    </div>
+                    <div class="todo-desc">Create bullet points covering sprint progress, blockers, and upcoming
+                        deadlines.</div>
+                    <div class="todo-meta">
+                        <span class="meta-tag">📅 Feb 23, 2026</span>
+                        <span class="priority-badge badge-med">Medium</span>
+                    </div>
+                </div>
+                <div class="todo-actions" style="opacity:1;">
+                    <div class="action-btn edit">✏️</div>
+                    <div class="action-btn">🗑</div>
+                </div>
+            </div>
+
+            <div class="section-divider">Upcoming</div>
+
+            <div class="todo-card">
+                <div class="priority-bar p-low"></div>
+                <div class="todo-checkbox"></div>
+                <div class="todo-content">
+                    <div class="todo-title">Update team docs on Notion</div>
+                    <div class="todo-desc">Add new onboarding steps for the engineering section.</div>
+                    <div class="todo-meta">
+                        <span class="meta-tag">📅 Feb 26, 2026</span>
+                        <span class="priority-badge badge-low">Low</span>
+                    </div>
+                </div>
+                <div class="todo-actions">
+                    <div class="action-btn edit">✏️</div>
+                    <div class="action-btn">🗑</div>
+                </div>
+            </div>
+            <div class="todo-card completed">
+                <div class="priority-bar p-low"></div>
+                <div class="todo-checkbox checked"></div>
+                <div class="todo-content">
+                    <div class="todo-title" style="text-decoration:line-through;">Send invoice to client</div>
+                    <div class="todo-desc">Invoice #1042 for February services.</div>
+                    <div class="todo-meta">
+                        <span class="meta-tag">📅 Feb 20, 2026</span>
+                        <span class="priority-badge badge-low">Low</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+
+
+        <dialog id="todoDialog">
+
+            <div class="dialog-header">
+                <h3 id="dialogTitle">New Todo</h3>
+                <button class="close-btn" id="closeDialog" title="Close">✕</button>
+            </div>
+
+            <div class="dialog-body">
+
+                <div class="detail-field">
+                    <label>Title</label>
+                    <input type="text" id="todoTitle" placeholder="What needs to be done?" required />
+                    <span class="error-msg" id="titleError">⚠️ Please add a title before saving.</span>
+
+                </div>
+
+                <div class="detail-field">
+                    <label>Description</label>
+                    <textarea id="todoDescription" placeholder="Add more details..."></textarea>
+                </div>
+
+                <div class="field-row">
+                    <div class="detail-field">
+                        <label>Due Date</label>
+                        <input type="date" id="todoDueDate" required />
+                    </div>
+                    <div class="detail-field">
+                        <label>Priority</label>
+                        <select id="todoPriority">
+                            <option value="high">🔴 High</option>
+                            <option value="medium" selected>🟡 Medium</option>
+                            <option value="low">🟢 Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="detail-field">
+                    <label>Notes</label>
+                    <textarea id="todoNotes" placeholder="Any extra notes..." style="min-height:52px;"></textarea>
+                </div>
+            </div>
+
+            <div class="dialog-footer">
+                <button class="btn-cancel" id="cancelDialog">Cancel</button>
+                <button class="btn-save" id="saveTodo">Add Todo</button>
+            </div>
+
+        </dialog>
+
+    </main>
+
+
+</body>
+
+</html>
