@@ -15,11 +15,13 @@
   --priority-low: #22c55e;
   --shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: "DM Sans", sans-serif;
   background: var(--bg);
@@ -38,7 +40,6 @@ body {
   background: var(--sidebar-bg);
   display: flex;
   flex-direction: column;
-  padding: 0;
   flex-shrink: 0;
 }
 
@@ -90,6 +91,7 @@ body {
   color: var(--sidebar-text);
   border-left-color: var(--accent);
 }
+
 .sidebar-item .count {
   margin-left: auto;
   background: #292524;
@@ -115,8 +117,9 @@ body {
 }
 
 /* ======================
-   main Styles
+   Main Styles
    ====================== */
+
 .main {
   flex: 1;
   display: flex;
@@ -184,7 +187,7 @@ body {
 }
 
 /* ======================
-   todo  Styles
+   Todo Styles
    ====================== */
 
 .todo-list {
@@ -209,7 +212,6 @@ body {
   transition:
     box-shadow 0.15s,
     border-color 0.15s;
-  position: relative;
 }
 
 .todo-card:hover {
@@ -231,7 +233,7 @@ body {
 .p-high {
   background: var(--priority-high);
 }
-.p-med {
+.p-medium {
   background: var(--priority-med);
 }
 .p-low {
@@ -272,16 +274,6 @@ body {
   color: var(--text);
   margin-bottom: 3px;
 }
-.error-msg {
-  font-size: 12px;
-  color: #ef4444;
-  margin-top: 5px;
-  display: none;
-}
-
-.error-msg.visible {
-  display: block;
-}
 
 .todo-desc {
   font-size: 13px;
@@ -308,10 +300,6 @@ body {
   font-weight: 500;
 }
 
-.meta-tag svg {
-  opacity: 0.6;
-}
-
 .priority-badge {
   font-size: 10px;
   font-weight: 600;
@@ -325,7 +313,7 @@ body {
   background: #fee2e2;
   color: #b91c1c;
 }
-.badge-med {
+.badge-medium {
   background: #fef9c3;
   color: #a16207;
 }
@@ -364,6 +352,7 @@ body {
   border-color: #fecaca;
   color: #ef4444;
 }
+
 .action-btn.edit:hover {
   background: #eff6ff;
   border-color: #bfdbfe;
@@ -371,40 +360,24 @@ body {
 }
 
 /* ======================
-   Dialog  Styles
+   Dialog Styles
    ====================== */
 
-.dialog-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(28, 25, 23, 0.55);
-  backdrop-filter: blur(3px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s;
-}
-.dialog-backdrop.open {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.dialog {
+dialog {
   background: white;
+  border: none;
   border-radius: 16px;
   width: 500px;
   max-width: 95vw;
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
-  transform: translateY(14px) scale(0.98);
-  transition: transform 0.2s;
+  padding: 0;
 }
-.dialog-backdrop.open .dialog {
-  transform: translateY(0) scale(1);
+
+dialog::backdrop {
+  background: rgba(28, 25, 23, 0.55);
+  backdrop-filter: blur(3px);
 }
 
 .dialog-header {
@@ -418,6 +391,7 @@ body {
   background: white;
   z-index: 1;
 }
+
 .dialog-header h3 {
   font-family: "DM Serif Display", serif;
   font-size: 20px;
@@ -438,6 +412,7 @@ body {
   color: var(--muted);
   transition: all 0.1s;
 }
+
 .close-btn:hover {
   background: #fee2e2;
   color: #ef4444;
@@ -481,14 +456,27 @@ body {
   outline: none;
   transition: border-color 0.15s;
 }
+
 .detail-field input:focus,
 .detail-field textarea:focus,
 .detail-field select:focus {
   border-color: var(--accent);
 }
+
 .detail-field textarea {
   resize: vertical;
   min-height: 72px;
+}
+
+.error-msg {
+  font-size: 12px;
+  color: #ef4444;
+  margin-top: 5px;
+  display: none;
+}
+
+.error-msg.visible {
+  display: block;
 }
 
 .dialog-footer {
@@ -513,6 +501,7 @@ body {
   font-weight: 500;
   cursor: pointer;
 }
+
 .btn-cancel:hover {
   background: var(--bg);
 }
@@ -529,6 +518,7 @@ body {
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(217, 119, 87, 0.3);
 }
+
 .btn-save:hover {
-  background: #c26642;
+  background: var(--accent-dark);
 }
