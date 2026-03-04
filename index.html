@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Flow</title>
+<script defer src="main.js"></script></head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <h1>Task <span>Flow</span></h1>
+        </div>
+        <div class="sidebar-section-label">Views</div>
+        <div class="sidebar-item" id="viewAll"><span>📋</span> All Tasks</div>
+        <div class="sidebar-item" id="viewToday"><span>📅</span> Today</div>
+        <div class="sidebar-item" id="viewUpcoming"><span>⚡</span> Upcoming</div>
+        <div class="sidebar-section-label">Projects</div>
+        <div id="projectList"></div>
+        <div class="sidebar-add-project">＋ Add Project</div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+        <div class="topbar">
+            <div class="topbar-left">
+                <h2>My Tasks</h2>
+                <p>Select a project to get started</p>
+            </div>
+            <button class="btn-add">＋ Add Todo</button>
+        </div>
+
+        <div class="filter-bar">
+            <div class="filter-chip active">All</div>
+            <div class="filter-chip">Active</div>
+            <div class="filter-chip">Completed</div>
+            <div class="filter-chip">🔴 High Priority</div>
+        </div>
+
+        <!-- TODO CARDS -->
+        <div class="todo-list"></div>
+    </main>
+
+    <!-- DIALOG -->
+    <dialog id="todoDialog">
+        <div class="dialog-header">
+            <h3 id="dialogTitle">New Todo</h3>
+            <button class="close-btn" id="closeDialog" title="Close">✕</button>
+        </div>
+
+        <div class="dialog-body">
+            <div class="detail-field">
+                <label>Title</label>
+                <input type="text" id="todoTitle" placeholder="What needs to be done?" />
+                <span class="error-msg" id="titleError">⚠️ Please add a title before saving.</span>
+            </div>
+
+            <div class="detail-field">
+                <label>Description</label>
+                <textarea id="todoDescription" placeholder="Add more details..."></textarea>
+            </div>
+
+            <div class="field-row">
+                <div class="detail-field">
+                    <label>Due Date</label>
+                    <input type="date" id="todoDueDate" />
+                </div>
+                <div class="detail-field">
+                    <label>Priority</label>
+                    <select id="todoPriority">
+                        <option value="high">🔴 High</option>
+                        <option value="medium" selected>🟡 Medium</option>
+                        <option value="low">🟢 Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="detail-field">
+                <label>Notes</label>
+                <textarea id="todoNotes" placeholder="Any extra notes..."></textarea>
+            </div>
+        </div>
+
+        <div class="dialog-footer">
+            <button class="btn-cancel" id="cancelDialog">Cancel</button>
+            <button class="btn-save" id="saveTodo">Add Todo</button>
+        </div>
+    </dialog>
+
+</body>
+
+</html>
